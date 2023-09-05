@@ -26,24 +26,32 @@ sudo cp $REPORT_FILE "$TARGET_DIR"
 rm $REPORT_FILE
 
 # Define the directory where the package resides
-PACKAGE_NAME="/Volumes/Tech/Mac/Adobe/Installers/Creative Cloud for M1/CLA - Mac M1 CC_Install.pkg"
+# PACKAGE_NAME="/Volumes/Tech/Mac/Adobe/Installers/Creative Cloud for M1/CLA - Mac M1 CC_Install.pkg"
+DMG_FILE="/Volumes/Tech/Mac/Adobe/Installers/Creative Cloud for M1/CLA-AdobeInstall.dmg"
 
-# Check if the package exists
-if [ -z "$PACKAGE_NAME" ]; then
-  echo "No .pkg file found in the given directory."
+# Check if the DMG file exists
+if [ ! -f "$DMG_FILE" ]; then
+  echo "No .dmg file found in the given directory."
   exit 1
 fi
 
-# Install the package
-sudo installer -pkg "$PACKAGE_NAME" -target /Applications
+# Mount the DMG file
+hdiutil attach "$DMG_FILE"
+
+MOUNTED_VOLUME="/Volumes/Install"
+APP_NAME="Install.app"
+
+# Copy the application to the Applications folder
+cp -R "$MOUNTED_VOLUME/$APP_NAME" "/Applications/"
+
+# Unmount the DMG
+hdiutil detach "$MOUNTED_VOLUME"
 
 # Exit status
 if [ $? -eq 0 ]; then
-  echo "Package installed successfully."
-
-
+  echo "Application installed successfully."
 else
-  echo "Package installation failed."
+  echo "Application installation failed."
   exit 1
 fi
 
