@@ -26,7 +26,7 @@ sudo cp $REPORT_FILE "$TARGET_DIR"
 rm $REPORT_FILE
 
 # Define the directory where the package resides
-PACKAGE_NAME=$"/Mac/Adobe/Installers/Creative Cloud for M1/CLA - Mac M1 CC_Install.pkg"
+PACKAGE_NAME="/Mac/Adobe/Installers/Creative Cloud for M1/CLA - Mac M1 CC_Install.pkg"
 
 # Check if the package exists
 if [ -z "$PACKAGE_NAME" ]; then
@@ -35,7 +35,7 @@ if [ -z "$PACKAGE_NAME" ]; then
 fi
 
 # Install the package
-sudo installer -pkg $PACKAGE_NAME -target /
+sudo installer -pkg "$PACKAGE_NAME" -target /
 
 # Exit status
 if [ $? -eq 0 ]; then
