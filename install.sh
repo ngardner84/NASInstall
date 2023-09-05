@@ -26,7 +26,7 @@ sudo cp $REPORT_FILE "$TARGET_DIR"
 rm $REPORT_FILE
 
 # Define the directory where the package resides
-PACKAGE_DIR="/Mac/Adobe/Installers/Creative Cloud for M1/"
+PACKAGE_DIR="/Mac/Adobe/Installers/Creative\ Cloud\ for\ M1/"
 
 # Find the first .pkg file in the directory
 PACKAGE_NAME=$(ls $PACKAGE_DIR/*.pkg | head -n 1)
