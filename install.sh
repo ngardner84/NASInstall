@@ -17,41 +17,31 @@ sudo mount -t smbfs "//$DOMAIN_USER:$DOMAIN_PASS@134.139.94.35/Tech" "$MOUNT_POI
 
 # Generate system report
 REPORT_FILE="/tmp/system_report.txt"
-system_profiler > $REPORT_FILE
+system_profiler > "$REPORT_FILE"
 
 # Copy the report to the SMB share
-sudo cp $REPORT_FILE "$TARGET_DIR"
+sudo cp "$REPORT_FILE" "$TARGET_DIR"
 
 # Clean up the local report
-rm $REPORT_FILE
+rm "$REPORT_FILE"
 
 # Define the directory where the package resides
-# PACKAGE_NAME="/Volumes/Tech/Mac/Adobe/Installers/Creative Cloud for M1/CLA - Mac M1 CC_Install.pkg"
-DMG_FILE="/Volumes/Tech/Mac/Adobe/Installers/Creative Cloud for M1/CLA-AdobeInstall.dmg"
+PACKAGE_NAME="/Volumes/Tech/Mac/Adobe/Installers/Creative Cloud for M1/CLA - Mac M1 CC_Install.pkg"
 
-# Check if the DMG file exists
-if [ ! -f "$DMG_FILE" ]; then
-  echo "No .dmg file found in the given directory."
+# Check if the package exists
+if [ -z "$PACKAGE_NAME" ] || [ ! -f "$PACKAGE_NAME" ]; then
+  echo "No .pkg file found in the given directory."
   exit 1
 fi
 
-# Mount the DMG file
-hdiutil attach "$DMG_FILE"
-
-MOUNTED_VOLUME="/Volumes/Install"
-APP_NAME="Install.app"
-
-# Copy the application to the Applications folder
-cp -R "$MOUNTED_VOLUME/$APP_NAME" "/Applications/"
-
-# Unmount the DMG
-hdiutil detach "$MOUNTED_VOLUME"
+# Install the package
+sudo installer -pkg "$PACKAGE_NAME" -target /
 
 # Exit status
 if [ $? -eq 0 ]; then
-  echo "Application installed successfully."
+  echo "Package installed successfully."
 else
-  echo "Application installation failed."
+  echo "Package installation failed."
   exit 1
 fi
 
