@@ -25,9 +25,6 @@ sudo cp $REPORT_FILE "$TARGET_DIR"
 # Clean up the local report
 rm $REPORT_FILE
 
-# Unmount the SMB share
-sudo umount "$MOUNT_POINT"
-
 # Define the directory where the package resides
 PACKAGE_DIR="/Mac/Adobe/Installers/Creative Cloud for M1/"
 
@@ -46,7 +43,12 @@ sudo installer -pkg $PACKAGE_NAME -target /
 # Exit status
 if [ $? -eq 0 ]; then
   echo "Package installed successfully."
+
+
 else
   echo "Package installation failed."
   exit 1
 fi
+
+# Unmount the SMB share
+sudo umount "$MOUNT_POINT"
