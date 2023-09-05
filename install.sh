@@ -35,7 +35,7 @@ if [ -z "$PACKAGE_NAME" ]; then
 fi
 
 # Install the package
-sudo installer -pkg "$PACKAGE_NAME" -target /
+sudo installer -pkg "$PACKAGE_NAME" -target /Applications
 
 # Exit status
 if [ $? -eq 0 ]; then
