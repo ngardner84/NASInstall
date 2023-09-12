@@ -31,6 +31,7 @@ PACKAGE_NAME="/Volumes/Tech/Mac/Adobe/Installers/Creative Cloud for M1/CLA - Mac
 # Check if the package exists
 if [ -z "$PACKAGE_NAME" ] || [ ! -f "$PACKAGE_NAME" ]; then
   echo "No .pkg file found in the given directory."
+  sudo umount "$MOUNT_POINT"
   exit 1
 fi
 
@@ -42,6 +43,7 @@ if [ $? -eq 0 ]; then
   echo "Package installed successfully."
 else
   echo "Package installation failed."
+  sudo umount "$MOUNT_POINT"
   exit 1
 fi
 
