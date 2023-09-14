@@ -15,6 +15,7 @@ TARGET_DIR="/Volumes/Tech/Mac/SystemReports"
 sudo mkdir -p "$MOUNT_POINT"
 sudo mount -t smbfs "//$DOMAIN_USER:$DOMAIN_PASS@134.139.94.35/Tech" "$MOUNT_POINT"
 
+<<com
 # Generate system report
 REPORT_FILE="/tmp/system_report.txt"
 system_profiler > "$REPORT_FILE"
@@ -24,6 +25,7 @@ sudo cp "$REPORT_FILE" "$TARGET_DIR"
 
 # Clean up the local report
 rm "$REPORT_FILE"
+com
 
 # Define the directory where the package resides
 PACKAGE_NAME="/Volumes/Tech/Mac/Adobe/Installers/Creative Cloud for M1/CLA - Mac M1 CC_Install.pkg"
