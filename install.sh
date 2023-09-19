@@ -27,6 +27,7 @@ sudo cp "$REPORT_FILE" "$TARGET_DIR"
 rm "$REPORT_FILE"
 com
 
+pwd
 # Define the directory where the package resides
 PACKAGE_NAME="/Mac/Adobe/Installers/Creative Cloud for M1/CLA_CC2023_MAC_ARM64_Install.pkg"
 
