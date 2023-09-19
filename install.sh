@@ -15,6 +15,12 @@ TARGET_DIR="/Volumes/Tech/Mac/SystemReports"
 sudo mkdir -p "$MOUNT_POINT"
 sudo mount -t smbfs "//$DOMAIN_USER:$DOMAIN_PASS@134.139.94.35/Tech" "$MOUNT_POINT"
 
+# Wait for the SMB mount to complete
+while [ ! -d "$MOUNT_POINT" ]; do
+  echo "Waiting for SMB mount to complete..."
+  sleep 2
+done
+
 echo "Mounted SMB share"
 <<com
 # Generate system report
