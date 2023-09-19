@@ -15,6 +15,7 @@ TARGET_DIR="/Volumes/Tech/Mac/SystemReports"
 sudo mkdir -p "$MOUNT_POINT"
 sudo mount -t smbfs "//$DOMAIN_USER:$DOMAIN_PASS@134.139.94.35/Tech" "$MOUNT_POINT"
 
+echo "Mounted SMB share"
 <<com
 # Generate system report
 REPORT_FILE="/tmp/system_report.txt"
@@ -27,6 +28,7 @@ sudo cp "$REPORT_FILE" "$TARGET_DIR"
 rm "$REPORT_FILE"
 com
 
+echo "Checking for Adobe package"
 # Define the directory where the package resides
 PACKAGE_NAME="/Volumes/Tech/Mac/Adobe/Installers/Creative Cloud for M1/CLA_CC2023_MAC_ARM64_Install.pkg"
 
