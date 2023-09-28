@@ -33,7 +33,7 @@ echo "Checking for Adobe package"
 PACKAGE_NAME="/Volumes/Tech/Mac/Adobe/Installers/Creative Cloud for M1/CLA_CC2023_MAC_ARM64_Install.pkg"
 
 # Check if the package exists
-if [ -z "$PACKAGE_NAME" ] || [ ! -f "$PACKAGE_NAME" ]; then
+if [ ! -f "$PACKAGE_NAME" ]; then
   echo "No .pkg file found in the given directory."
   sudo umount "$MOUNT_POINT"
   exit 1
