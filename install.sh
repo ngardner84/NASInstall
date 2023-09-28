@@ -15,14 +15,8 @@ TARGET_DIR="/Volumes/Tech/Mac/SystemReports"
 sudo mkdir -p "$MOUNT_POINT"
 sudo mount -t smbfs "//$DOMAIN_USER:$DOMAIN_PASS@134.139.94.35/Tech" "$MOUNT_POINT"
 
-# Wait for the SMB mount to complete
-while [ ! -d "$MOUNT_POINT" ]; do
-  echo "Waiting for SMB mount to complete..."
-  sleep 2
-done
-
 echo "Mounted SMB share"
-<<com
+
 # Generate system report
 REPORT_FILE="/tmp/system_report.txt"
 system_profiler > "$REPORT_FILE"
@@ -32,7 +26,7 @@ sudo cp "$REPORT_FILE" "$TARGET_DIR"
 
 # Clean up the local report
 rm "$REPORT_FILE"
-com
+
 
 echo "Checking for Adobe package"
 # Define the directory where the package resides
