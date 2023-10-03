@@ -27,9 +27,9 @@ sudo cp "$REPORT_FILE" "$TARGET_DIR"
 
 # Clean up the local report
 rm "$REPORT_FILE"
-com
 
-echo "Checking for Adobe package"
+
+echo "Checking for GlobalProtect package"
 # Define the directory where the package resides
 PACKAGE_NAME="/Volumes/Tech/Mac/GlobalProtect/GlobalProtect.pkg"
 
@@ -54,3 +54,5 @@ fi
 
 # Unmount the SMB share
 sudo umount "$MOUNT_POINT"
+
+com
