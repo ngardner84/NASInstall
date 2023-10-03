@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-MOUNT_POINT="/Volumes/Tech"  # Update the desired mount point
+MOUNT_POINT="./Tech"  # Update the desired mount point
 
 # Check if DOMAIN_USER and DOMAIN_PASS are set
 if [ -z "$DOMAIN_USER" ] || [ -z "$DOMAIN_PASS" ]; then
