@@ -12,8 +12,8 @@ fi
 TARGET_DIR="/Volumes/Tech/Mac/SystemReports"
 
 # Mount the SMB share
-sudo mkdir -p "$MOUNT_POINT"
-sudo mount -t smbfs "//$DOMAIN_USER:$DOMAIN_PASS@134.139.94.35/Tech" "$MOUNT_POINT"
+sudo mkdir -p $MOUNT_POINT
+sudo mount -t smbfs //$DOMAIN_USER:$DOMAIN_PASS@134.139.94.35/Tech $MOUNT_POINT
 
 echo "Mounted SMB share"
 
