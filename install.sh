@@ -17,6 +17,7 @@ sudo mount -t smbfs "//$DOMAIN_USER:$DOMAIN_PASS@134.139.94.35/Tech" "$MOUNT_POI
 
 echo "Mounted SMB share"
 
+<<com
 # Generate system report
 REPORT_FILE="/tmp/system_report.txt"
 system_profiler > "$REPORT_FILE"
@@ -26,11 +27,11 @@ sudo cp "$REPORT_FILE" "$TARGET_DIR"
 
 # Clean up the local report
 rm "$REPORT_FILE"
-
+com
 
 echo "Checking for Adobe package"
 # Define the directory where the package resides
-PACKAGE_NAME="/Volumes/Tech/Mac/Adobe/Installers/Creative Cloud for M1/CLA_CC2023_MAC_ARM64_Install.pkg"
+PACKAGE_NAME="/Volumes/Tech/Mac/GlobalProtect/GlobalProtect.pkg"
 
 # Check if the package exists
 if [ ! -f "$PACKAGE_NAME" ]; then
